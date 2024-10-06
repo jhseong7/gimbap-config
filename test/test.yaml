@@ -1,0 +1,11 @@
+test_dict:
+  value: 1
+  value2: "2"
+  nested:
+    value: 3
+    value2: "4"
+yaml_bool: true
+yaml_bool2: true
+yaml_int: 3120
+yaml_float: 3.14
+yaml_str: "string"
