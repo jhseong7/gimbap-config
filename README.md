@@ -29,6 +29,21 @@ var AppModule = gimbap.DefineModule(gimbap.ModuleConfig{
 })
 ```
 
+Then you must inject the default options provider to the appmodule.
+
+```go
+func main() {
+	app := gimbap.CreateApp(gimbap.AppOption{
+		AppModule: app.AppModule,
+	})
+
+	// Provider the root config for the config service
+	app.UseInjection(config.ConfigOption{ConfigFilePathList: []string{"./.env"}})
+
+  app.Run()
+}
+```
+
 then inject the `ConfigService` to the module you want to use the configurations.
 
 ## Third-party libraries
