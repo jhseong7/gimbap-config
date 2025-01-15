@@ -38,7 +38,7 @@ func main() {
 	})
 
 	// Provider the root config for the config service
-	app.UseInjection(config.ConfigOption{ConfigFilePathList: []string{"./.env"}})
+	app.Provide(config.ConfigOption{ConfigFilePathList: []string{"./.env"}})
 
   app.Run()
 }

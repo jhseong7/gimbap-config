@@ -26,6 +26,9 @@ type (
 
 		// Toggle the automatic watching of the configuration file changes
 		WatchConfigChange bool
+
+		// Prevent the auto loading of the configuration file. Default is false
+		PreventAutoLoad bool
 	}
 )
 
@@ -90,6 +93,10 @@ func (c *ConfigService) handleRawConfigData() {
 func (c *ConfigService) loadConfig() {
 	if err := c.handleConfigFilePathList(); err != nil {
 		c.logger.Errorf("Failed to handle config file path list: %v", err)
+	}
+
+	if !c.option.PreventAutoLoad {
+		viper.AutomaticEnv()
 	}
 
 	c.handleRawConfigData()
